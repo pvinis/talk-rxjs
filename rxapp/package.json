@@ -13,6 +13,7 @@
     "react-dom": "^16.8.6",
     "react-native": "https://github.com/expo/react-native/archive/sdk-34.0.0.tar.gz",
     "react-native-web": "^0.11.4",
+    "rx-react-container": "^0.9.0",
     "rxjs": "^6.5.3"
   },
   "devDependencies": {
