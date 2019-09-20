@@ -6,5 +6,7 @@ import { SequenceDetector } from './src/SequencerDetector'
 
 
 export default function App() {
+	return <Count />
+	return <SteppedCount />
 	return <SequenceDetector />
 }
