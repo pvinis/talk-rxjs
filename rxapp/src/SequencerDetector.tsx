@@ -84,7 +84,7 @@ export const SequenceDetector = props => {
 
 	const {
 		onLeft, onRight, onUp, onDown, onReset,
-		recognizedSequence,
+		sequenceSoFar, recognizedSequence,
 	} = state
 
 	return (
@@ -97,6 +97,8 @@ export const SequenceDetector = props => {
 				<View style={{ position: 'absolute', left: 150, top: 100 }}><Button onPress={onReset} title='reset' /></View>
 			</View>
 			<View style={{ alignItems: 'center' }}>
+				<Text>sequenceSoFar</Text>
+				<Text>{sequenceSoFar.join(', ')}</Text>
 				<Text>recognizedSequence</Text>
 				<Text>{recognizedSequence}</Text>
 			</View>
