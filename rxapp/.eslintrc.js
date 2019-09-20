@@ -16,6 +16,10 @@ module.exports = {
 			jsx: true,
 		},
 	},
+	plugins: [
+		'react',
+		'react-hooks',
+	],
 	rules: {
 		semi: [ERR, 'never'],
 		indent: [ERR, 'tab'],
