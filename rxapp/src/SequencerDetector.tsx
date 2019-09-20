@@ -83,23 +83,20 @@ export const SequenceDetector = props => {
 	if (!state) return <RED />
 
 	const {
-		onLeft, onRight, onUp, onDown, onReset, onDirection,
-		sequenceSoFar, recognizedSequence,
-		// some callback to do somethins
+		onLeft, onRight, onUp, onDown, onReset,
+		recognizedSequence,
 	} = state
 
 	return (
 		<SafeAreaView style={{ alignItems: 'center', marginTop: 200 }}>
 			<View style={{ height: 200, width: 300 }}>
-				<View style={{ position: 'absolute', top: 0, left: 150 }}><Button onPress={() => onDirection(Direction.Up)} title='up' /></View>
-				<View style={{ position: 'absolute', bottom: 0, left: 150 }}><Button onPress={() => onDirection(Direction.Down)} title='down' /></View>
-				<View style={{ position: 'absolute', left: 0, top: 100 }}><Button onPress={() => onDirection(Direction.Left)} title='left' /></View>
-				<View style={{ position: 'absolute', right: 0 , top: 100 }}><Button onPress={() => onDirection(Direction.Right)} title='right' /></View>
+				<View style={{ position: 'absolute', top: 0, left: 150 }}><Button onPress={onUp} title='up' /></View>
+				<View style={{ position: 'absolute', bottom: 0, left: 150 }}><Button onPress={onDown} title='down' /></View>
+				<View style={{ position: 'absolute', left: 0, top: 100 }}><Button onPress={onLeft} title='left' /></View>
+				<View style={{ position: 'absolute', right: 0 , top: 100 }}><Button onPress={onRight} title='right' /></View>
 				<View style={{ position: 'absolute', left: 150, top: 100 }}><Button onPress={onReset} title='reset' /></View>
 			</View>
 			<View style={{ alignItems: 'center' }}>
-				<Text>sequenceSoFar</Text>
-				<Text>{sequenceSoFar.join(', ')}</Text>
 				<Text>recognizedSequence</Text>
 				<Text>{recognizedSequence}</Text>
 			</View>
