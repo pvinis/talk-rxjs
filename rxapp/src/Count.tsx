@@ -32,7 +32,7 @@ export const Count = props => {
 	const { onPlus, onMinus, count } = state
 
 	return (
-		<SafeAreaView style={{ alignItems: 'center',  marginTop: 200 }}>
+		<SafeAreaView style={{ alignItems: 'center', marginTop: 200 }}>
 			<Text>count</Text>
 			<Text>{count}</Text>
 			<Button onPress={onPlus} title='more' />

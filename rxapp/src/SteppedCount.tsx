@@ -19,14 +19,14 @@ const controller = container => {
 	).pipe(
 		scan((acc, x) => acc + x, 0),
 		startWith(0),
-    )
+	)
 
 	const count = merge(
 		onPlus.pipe(map(() => +1)),
-        onMinus.pipe(map(() => -1)),
+		onMinus.pipe(map(() => -1)),
 	).pipe(
-        withLatestFrom(step),
-        map(([sign, step]) => sign * step),
+		withLatestFrom(step),
+		map(([sign, step]) => sign * step),
 		scan((acc, x) => acc + x, 0),
 		startWith(0),
 	)
@@ -42,24 +42,24 @@ export const SteppedCount = props => {
 	if (!state) return <RED />
 
 	const {
-        onStepPlus, onStepMinus, step,
-        onPlus, onMinus, count,
-    } = state
+		onStepPlus, onStepMinus, step,
+		onPlus, onMinus, count,
+	} = state
 
 	return (
-		<SafeAreaView style={{ flexDirection: 'row', justifyContent: 'center',  marginTop: 200 }}>
-		    <View style={{ alignItems: 'center' }}>
-	    		<Text>step</Text>
-	    		<Text>{step}</Text>
-	    		<Button onPress={onStepPlus} title='more' />
-	    		<Button onPress={onStepMinus} title='less' />
-            </View>
-    		<View style={{ alignItems: 'center' }}>
-    			<Text>count</Text>
-    			<Text>{count}</Text>
-    			<Button onPress={onPlus} title='more' />
-    			<Button onPress={onMinus} title='less' />
-            </View>
+		<SafeAreaView style={{ flexDirection: 'row', justifyContent: 'center', marginTop: 200 }}>
+			<View style={{ alignItems: 'center' }}>
+				<Text>step</Text>
+				<Text>{step}</Text>
+				<Button onPress={onStepPlus} title='more' />
+				<Button onPress={onStepMinus} title='less' />
+			</View>
+			<View style={{ alignItems: 'center' }}>
+				<Text>count</Text>
+				<Text>{count}</Text>
+				<Button onPress={onPlus} title='more' />
+				<Button onPress={onMinus} title='less' />
+			</View>
 		</SafeAreaView>
 	)
 }

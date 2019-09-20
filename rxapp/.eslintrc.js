@@ -1,5 +1,6 @@
 const OFF = 'off'
-const ERR = 'off'
+const WARN = 'warn'
+const ERR = 'error'
 
 module.exports = {
 	root: true,
@@ -27,13 +28,15 @@ module.exports = {
 		'object-curly-spacing': [ERR, 'always'],
 		'no-unused-vars': OFF,
 
+		'@typescript-eslint/explicit-function-return-type': OFF,
+		'@typescript-eslint/no-unused-vars': OFF,
 
 		'react/jsx-indent': [ERR, 'tab'],
 		'react/prop-types': OFF,
 		'react/jsx-tag-spacing': ERR,
 
-		'@typescript-eslint/explicit-function-return-type': OFF,
-		'@typescript-eslint/no-unused-vars': OFF,
+		'react-hooks/rules-of-hooks': ERR,
+		'react-hooks/exhaustive-deps': WARN,
 	},
 	settings: {
 		react: {
