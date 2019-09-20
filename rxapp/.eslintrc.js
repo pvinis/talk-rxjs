@@ -1,3 +1,6 @@
+const OFF = 'off'
+const ERR = 'off'
+
 module.exports = {
 	root: true,
 	parser: '@typescript-eslint/parser',
@@ -13,24 +16,24 @@ module.exports = {
 		},
 	},
 	rules: {
-		semi: ['error', 'never'],
-		indent: ['error', 'tab'],
-		quotes: ['error', 'single'],
-		'comma-dangle': ['error', 'always-multiline'],
-		'arrow-spacing': ['error'],
-		'no-multi-spaces': ['error', { 'ignoreEOLComments': true }], // has exceptions too, if needed
+		semi: [ERR, 'never'],
+		indent: [ERR, 'tab'],
+		quotes: [ERR, 'single'],
+		'comma-dangle': [ERR, 'always-multiline'],
+		'arrow-spacing': ERR,
+		'no-multi-spaces': [ERR, { 'ignoreEOLComments': true }], // has exceptions too, if needed
 		'key-spacing': ['error'],
-		'no-console': 'off',
-		'object-curly-spacing': ['error', 'always'],
-		'no-unused-vars': 'off',
+		'no-console': OFF,
+		'object-curly-spacing': [ERR, 'always'],
+		'no-unused-vars': OFF,
 
 
-		'react/jsx-indent': ['error', 'tab'],
-		'react/prop-types': 'off',
-		'react/jsx-tag-spacing': 'error',
+		'react/jsx-indent': [ERR, 'tab'],
+		'react/prop-types': OFF,
+		'react/jsx-tag-spacing': ERR,
 
-		'@typescript-eslint/explicit-function-return-type': 'off',
-
+		'@typescript-eslint/explicit-function-return-type': OFF,
+		'@typescript-eslint/no-unused-vars': OFF,
 	},
 	settings: {
 		react: {
@@ -38,6 +41,3 @@ module.exports = {
 		},
 	},
 }
-
-
-//     plugins: ['react'],

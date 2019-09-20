@@ -1,8 +1,10 @@
 import React from 'react'
-import { Text, View, Button } from 'react-native'
+import { Text, Button, SafeAreaView } from 'react-native'
 import { of, Subject, merge } from 'rxjs'
 import { combineProps, useRxController } from 'rx-react-container'
 import { map, scan, switchMap, startWith } from 'rxjs/operators'
+
+import { RED } from './RED'
 
 
 const CountController = container => {
@@ -30,14 +32,15 @@ const CountController = container => {
 
 export const Count = props => {
 	const state = useRxController(CountController, props)
-	if (!state) return null
+    if (!state) return <RED />
+
 	const { onMinus, onPlus, totalCount } = state
 
 	return (
-		<View style={{ marginTop: 100 }}>
-			<Button onPress={onMinus} title='-' />
+		<SafeAreaView style={{ alignItems: 'center' , marginTop: 200 }}>
 			<Text>{totalCount}</Text>
-			<Button onPress={onPlus} title='+' />
-		</View>
+			<Button onPress={onPlus} title='more' />
+			<Button onPress={onMinus} title='less' />
+		</SafeAreaView>
 	)
 }
