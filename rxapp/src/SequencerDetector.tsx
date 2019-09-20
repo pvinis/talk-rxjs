@@ -3,7 +3,7 @@ import { View, Text, Button, SafeAreaView } from 'react-native'
 import R from 'ramda'
 import { Subject, merge, Observable } from 'rxjs'
 import { combineProps, useRxController } from 'rx-react-container'
-import { map, scan, startWith, withLatestFrom } from 'rxjs/operators'
+import { map, scan, startWith, withLatestFrom, debounceTime } from 'rxjs/operators'
 
 import { RED } from './RED'
 
@@ -47,9 +47,14 @@ const controller = container => {
 		onDown.pipe(map(() => Direction.Down)),
 	)
 
+	const sequenceSoFar_reset = direction.pipe(
+		debounceTime(2000),
+	)
+
 	const sequenceSoFar: Observable<Sequence> = merge(
 		direction,
-		onReset.pipe(map(() => null))
+		onReset.pipe(map(() => null)),
+		sequenceSoFar_reset.pipe(map(() => null)),
 	).pipe(
 		scan((acc, direction) => {
 			if (direction === null) return []

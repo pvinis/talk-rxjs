@@ -30,6 +30,7 @@ module.exports = {
 
 		'@typescript-eslint/explicit-function-return-type': OFF,
 		'@typescript-eslint/no-unused-vars': OFF,
+		'@typescript-eslint/camelcase': OFF,
 
 		'react/jsx-indent': [ERR, 'tab'],
 		'react/prop-types': OFF,
