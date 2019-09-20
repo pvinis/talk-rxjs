@@ -37,6 +37,7 @@ const controller = container => {
 	const onRight = new Subject()
 	const onUp = new Subject()
 	const onDown = new Subject()
+	const onReset = new Subject()
 	// const onDirection = new Subject()
 
 	const direction: Observable<Direction> = merge(
@@ -46,8 +47,14 @@ const controller = container => {
 		onDown.pipe(map(() => Direction.Down)),
 	)
 
-	const sequenceSoFar: Observable<Sequence> = direction.pipe(
-		scan((acc, direction) => R.concat(acc, [direction]), [] as Sequence),
+	const sequenceSoFar: Observable<Sequence> = merge(
+		direction,
+		onReset.pipe(map(() => null))
+	).pipe(
+		scan((acc, direction) => {
+			if (direction === null) return []
+			return R.concat(acc, [direction])
+		}, [] as Sequence),
 		startWith([]),
 	)
 
@@ -61,7 +68,7 @@ const controller = container => {
 
 	return combineProps(
 		{ sequenceSoFar, recognizedSequence },
-		{ onLeft, onRight, onUp, onDown },
+		{ onLeft, onRight, onUp, onDown, onReset },
 	)
 }
 
@@ -70,7 +77,7 @@ export const SequenceDetector = props => {
 	if (!state) return <RED />
 
 	const {
-		onLeft, onRight, onUp, onDown,
+		onLeft, onRight, onUp, onDown, onReset,
 		sequenceSoFar, recognizedSequence,
 		// some callback to do somethins
 	} = state
@@ -82,6 +89,7 @@ export const SequenceDetector = props => {
 				<View style={{ position: 'absolute', bottom: 0, left: 150 }}><Button onPress={onDown} title='down' /></View>
 				<View style={{ position: 'absolute', left: 0, top: 100 }}><Button onPress={onLeft} title='left' /></View>
 				<View style={{ position: 'absolute', right: 0 , top: 100 }}><Button onPress={onRight} title='right' /></View>
+				<View style={{ position: 'absolute', left: 150, top: 100 }}><Button onPress={onReset} title='reset' /></View>
 			</View>
 			<View style={{ alignItems: 'center' }}>
 				<Text>sequenceSoFar</Text>
