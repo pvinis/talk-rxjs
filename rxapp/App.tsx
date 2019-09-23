@@ -1,11 +1,12 @@
 import React from 'react'
 import { createAppContainer, FlatList } from 'react-navigation'
 import { createStackNavigator } from 'react-navigation-stack'
+import { Appearance, AppearanceProvider, useColorScheme } from 'react-native-appearance'
+import { Button } from 'react-native'
 
 import { Count } from './src/Count'
 import { SteppedCount } from './src/SteppedCount'
 import { SequenceDetector } from './src/SequencerDetector'
-import { Button } from 'react-native'
 
 
 const List = (props) => (
@@ -23,4 +24,16 @@ const AppNavigator = createStackNavigator({
 	SequenceDetector: { screen: SequenceDetector },
 })
 
-export default createAppContainer(AppNavigator)
+const Navigation = createAppContainer(AppNavigator)
+
+const App = () => {
+	const theme = useColorScheme()
+
+	return (
+		<AppearanceProvider>
+			<Navigation theme={theme} />
+		</AppearanceProvider>
+	)
+}
+
+export default App
