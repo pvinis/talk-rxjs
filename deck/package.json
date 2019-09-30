@@ -1,0 +1,21 @@
+{
+  "name": "talk-rxjs",
+  "version": "1.0.0",
+  "description": "A talk about how to use rxjs in React Native projects",
+  "author": "Pavlos Vinieratos <pvinis@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "mdx-deck deck.mdx",
+    "pdf": "npx website-pdf http://localhost:8000//print -o talk.pdf",
+    "png": "npx capture-website-cli --overwrite http://localhost:8000 talk.png",
+    "build": "yarn pdf; yarn png"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^6.5.0",
+    "eslint-plugin-mdx": "^1.5.0",
+    "eslint-plugin-react": "^7.14.3",
+    "mdx-deck": "^3.0.0",
+    "react-native-web": "^0.11.7"
+  }
+}
