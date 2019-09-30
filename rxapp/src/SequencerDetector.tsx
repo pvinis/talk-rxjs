@@ -37,44 +37,10 @@ const controller = container => {
 	const onRight = new Subject()
 	const onUp = new Subject()
 	const onDown = new Subject()
-	const onReset = new Subject()
-	const onDirection = new Subject<Direction>()
-
-	const direction: Observable<Direction> = merge(
-		onLeft.pipe(map(() => Direction.Left)),
-		onRight.pipe(map(() => Direction.Right)),
-		onUp.pipe(map(() => Direction.Up)),
-		onDown.pipe(map(() => Direction.Down)),
-		onDirection,
-	)
-
-	const sequenceSoFar_reset = direction.pipe(
-		debounceTime(2000),
-	)
-
-	const sequenceSoFar: Observable<Sequence> = merge(
-		direction,
-		onReset.pipe(map(() => null)),
-		sequenceSoFar_reset.pipe(map(() => null)),
-	).pipe(
-		scan((acc, direction) => {
-			if (direction === null) return []
-			return R.concat(acc, [direction])
-		}, [] as Sequence),
-		startWith([]),
-	)
-
-	const recognizedSequence = sequenceSoFar.pipe(
-		map(seq => {
-			if (R.equals(seq, Sequences.Konami)) return 'Konami'
-			if (R.equals(seq, Sequences.Left)) return 'Left!'
-			return ''
-		})
-	)
 
 	return combineProps(
-		{ sequenceSoFar, recognizedSequence },
-		{ onLeft, onRight, onUp, onDown, onReset, onDirection },
+		{ },
+		{ onLeft, onRight, onUp, onDown },
 	)
 }
 
@@ -83,8 +49,7 @@ export const SequenceDetector = props => {
 	if (!state) return <RED />
 
 	const {
-		onLeft, onRight, onUp, onDown, onReset,
-		sequenceSoFar, recognizedSequence,
+		onLeft, onRight, onUp, onDown,
 	} = state
 
 	return (
@@ -94,13 +59,8 @@ export const SequenceDetector = props => {
 				<View style={{ position: 'absolute', bottom: 0, left: 150 }}><Button onPress={onDown} title='down' /></View>
 				<View style={{ position: 'absolute', left: 0, top: 100 }}><Button onPress={onLeft} title='left' /></View>
 				<View style={{ position: 'absolute', right: 0 , top: 100 }}><Button onPress={onRight} title='right' /></View>
-				<View style={{ position: 'absolute', left: 150, top: 100 }}><Button onPress={onReset} title='reset' /></View>
 			</View>
 			<View style={{ alignItems: 'center' }}>
-				<Text>sequenceSoFar</Text>
-				<Text>{sequenceSoFar.join(', ')}</Text>
-				<Text>recognizedSequence</Text>
-				<Text>{recognizedSequence}</Text>
 			</View>
 		</SafeAreaView>
 	)
