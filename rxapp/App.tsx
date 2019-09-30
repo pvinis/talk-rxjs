@@ -9,6 +9,9 @@ import { SteppedCount } from './src/SteppedCount'
 import { SequenceDetector } from './src/SequencerDetector'
 
 
+console.disableYellowBox = true
+
+
 const List = (props) => (
 	<>
 		<Button title='Count' onPress={() => props.navigation.navigate('Count')} />
