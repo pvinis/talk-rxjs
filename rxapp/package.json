@@ -6,7 +6,8 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject",
-    "lint": "eslint . --ext ts,tsx,js,jsx --fix"
+    "lint": "eslint . --ext ts,tsx,js,jsx --fix",
+    "test": "jest"
   },
   "dependencies": {
     "expo": "^35.0.0",
@@ -23,15 +24,19 @@
     "rxjs": "^6.5.3"
   },
   "devDependencies": {
+    "@types/jest": "^24.0.18",
     "@types/ramda": "^0.26.22",
     "@types/react": "^16.8.23",
     "@types/react-native": "^0.60.0",
     "@typescript-eslint/eslint-plugin": "^2.3.0",
     "@typescript-eslint/parser": "^2.3.0",
+    "babel-jest": "^24.9.0",
     "babel-preset-expo": "^6.0.0",
     "eslint": "^6.4.0",
     "eslint-plugin-react": "^7.14.3",
     "eslint-plugin-react-hooks": "^2.0.1",
+    "jest": "^24.9.0",
+    "ts-jest": "^24.1.0",
     "typescript": "^3.4.5"
   },
   "private": true

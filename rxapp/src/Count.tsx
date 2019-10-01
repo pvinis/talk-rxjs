@@ -7,7 +7,12 @@ import { map, scan, startWith } from 'rxjs/operators'
 import { RED } from './RED'
 
 
-const controller = container => {
+export const controller = (container, input = {
+}) => {
+	return {
+		input: {},
+		output: {},
+	}
 }
 
 export const Count = props => {
