@@ -1,4 +1,4 @@
-import { TestScheduler } from 'rxjs/testing'
+import { cold } from 'jest-marbles'
 
 import { getTestScheduler, voidMap, numberMap } from './test-helpers'
 import { controller } from './Count'
