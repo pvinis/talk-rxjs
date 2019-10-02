@@ -18,7 +18,7 @@ enum Direction {
 type Sequence = Direction[]
 
 const Sequences = {
-	Left: [Direction.Left],
+	Square: [Direction.Up, Direction.Left, Direction.Down, Direction.Right],
 	Konami: [
 		Direction.Up,
 		Direction.Up,

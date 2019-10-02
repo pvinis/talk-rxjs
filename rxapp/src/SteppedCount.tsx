@@ -2,7 +2,7 @@ import React from 'react'
 import { View, Text, Button, SafeAreaView } from 'react-native'
 import { Subject, merge } from 'rxjs'
 import { combineProps, useRxController } from 'rx-react-container'
-import { map, scan, startWith, withLatestFrom } from 'rxjs/operators'
+import { map, scan, startWith, withLatestFrom, delay, debounceTime } from 'rxjs/operators'
 
 import { RED } from './RED'
 
