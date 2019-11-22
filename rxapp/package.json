@@ -37,7 +37,7 @@
     "eslint-plugin-react-hooks": "2.3.0",
     "jest": "24.9.0",
     "jest-marbles": "2.5.0",
-    "ts-jest": "24.1.0",
+    "ts-jest": "24.2.0",
     "typescript": "3.6.3"
   },
   "private": true
