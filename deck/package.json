@@ -12,7 +12,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "eslint": "6.7.1",
+    "eslint": "6.7.2",
     "eslint-plugin-mdx": "1.6.3",
     "eslint-plugin-react": "7.17.0",
     "mdx-deck": "3.0.13",
